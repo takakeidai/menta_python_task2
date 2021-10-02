@@ -79,7 +79,7 @@ def main():
             idx = name.text.find(target)
             company_name.append(name.text[:idx])
         total_company_list += company_name
-        # driver.find_element_by_css_selector(".iconFont--arrowLeft").click()
+        driver.find_element_by_css_selector(".iconFont--arrowLeft").click()
         i += 1
     print(len(total_company_list))
 
@@ -87,14 +87,13 @@ def main():
     # 2ページ目：50
     i = 0
     while i < 1:
-        # driver.find_element_by_css_selector(".iconFont--arrowLeft").click()
+        driver.find_element_by_css_selector(".iconFont--arrowLeft").click()
         name_list = driver.find_elements_by_class_name("cassetteRecruit__name")
         for name in name_list:
             target = ' '
             idx = name.text.find(target)
             company_name.append(name.text[:idx])
         total_company_list += company_name
-        # driver.find_element_by_css_selector(".iconFont--arrowLeft").click()
         i += 1
     print(len(total_company_list))
 
