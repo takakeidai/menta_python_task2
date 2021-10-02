@@ -75,11 +75,7 @@ def main():
     ##　②会社名だけ取り出そうとする。以前行った時は3000件を超える会社名が出力されたが、今回は100件ほど。
 
     # while True:
-
-
     #     name_list = driver.find_elements_by_class_name("cassetteRecruit__name")
-
-
     #     for name in name_list:
     #         target = ' '
     #         idx = name.text.find(target)
@@ -89,16 +85,13 @@ def main():
     #         df = df.append(
     #             {'会社名':company_name[i]}, 
     #             ignore_index=True)
-
     #     try:
     #         driver.find_element_by_css_selector(".iconFont--arrowLeft").click()
     #     except:
     #         print('最終ページです')
     #         break
 
-
     # df.to_csv("会社一覧.csv", encoding = "utf-8_sig")
-
 
 
 
