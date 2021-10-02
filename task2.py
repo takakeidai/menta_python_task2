@@ -57,8 +57,7 @@ def main():
     title = []
     first_year_fee_list = []
 
-    while True:
-
+    for _ in range(1,14):
         name_list = driver.find_elements_by_class_name("cassetteRecruit__name")
         title_list = driver.find_elements_by_css_selector('.cassetteRecruit__copy')
         table_list = driver.find_elements_by_css_selector(".cassetteRecruit .tableCondition")
@@ -75,27 +74,28 @@ def main():
             first_year_fee = find_table_target_word(table.find_elements_by_tag_name("th"), table.find_elements_by_tag_name("td"), "初年度年収")
             first_year_fee_list.append(first_year_fee)
 
+        if _ != 13:
+            next_page = driver.find_element_by_css_selector(".iconFont--arrowLeft")
+            next_page_link = next_page.get_attribute('href')
+            driver.get(next_page_link)
+        else:
+            pass
 
-        for i in range(0, len(company_name)):
-            if first_year_fee_list[i] == None:
-                df = df.append(
-                    {'会社名':company_name[i],
-                    'タイトル':title[i],
-                    "初年度年収":'None'}, 
-                    ignore_index=True)
-            else:
-                df = df.append(
-                    {'会社名':company_name[i],
-                    'タイトル':title[i],
-                    "初年度年収":first_year_fee_list[i]}, 
-                    ignore_index=True)
+    for i in range(0, len(company_name)):
+        if first_year_fee_list[i] == None:
+            df = df.append(
+                {'会社名':company_name[i],
+                'タイトル':title[i],
+                "初年度年収":'None'}, 
+                ignore_index=True)
+        else:
+            df = df.append(
+                {'会社名':company_name[i],
+                'タイトル':title[i],
+                "初年度年収":first_year_fee_list[i]}, 
+                ignore_index=True)
 
-        try:
-            driver.find_element_by_css_selector(".iconFont--arrowLeft").click()
-        except:
-            print('最終ページです')
-            break
-
+    df.to_csv("企業情報一覧.csv", encoding = "utf-8_sig")
 
 
 
@@ -104,6 +104,7 @@ if __name__ == "__main__":
     main()
 
 
+# cassetteRecruit__content
 
 
 
