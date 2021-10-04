@@ -37,7 +37,6 @@ def find_target_tC_body(th_elms, tb_elms, target_1:str, target_2:str):
 
 
 def main():
-    search_keyword = "高収入"
     driver_path = ChromeDriverManager().install()
     driver = set_driver(driver_path, False)
     driver.get("https://tenshoku.mynavi.jp/")
@@ -45,6 +44,9 @@ def main():
     driver.execute_script('document.querySelector(".karte-close").click()')
     time.sleep(5)
     driver.execute_script('document.querySelector(".karte-close").click()')
+
+    #コンソールから検索した情報を入力
+    search_keyword = input('何を検索したいですか？')
     driver.find_element_by_class_name(
         "topSearch__text").send_keys(search_keyword)
     driver.find_element_by_class_name("topSearch__button").click()
